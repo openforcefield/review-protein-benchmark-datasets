@@ -6,6 +6,8 @@ def main():
     figure_width = 3.0
     figure_height = 3.0
 
+    pyplot.rcParams.update({"font.size": 10.0})
+
     # Create simulated NOESY data to be plotted. Generate 1-D peaks at
     # x = 0.1, 0.2, 0.7, and 0.9 and cross peaks at (0.1, 0.7) and (0.2, 0.9).
     N_points = 10001
@@ -85,6 +87,13 @@ def main():
     # Create line plots for the 1-D spectrum in the top and right axes
     top_axes.plot(x, one_d_spectrum, color="black", linewidth=1)
     right_axes.plot(one_d_spectrum, x, color="black", linewidth=1)
+
+    # Label peaks in the top and right axes
+    peak_labels = "ABCD"
+    for (peak_x, height), peak_label in zip(peaks, "ABCD"):
+        top_axes.text(peak_x + 0.0125, 0.625, peak_label)
+        right_axes.text(0.625, peak_x + 0.0125, peak_label)
+
 
     pyplot.savefig("noesy-2d.png")
     pyplot.close(figure)

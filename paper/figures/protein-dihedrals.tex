@@ -27,29 +27,29 @@
     \node {
         \chemfig[atom sep = 20 pt, double bond sep = 3 pt, cram width = 4 pt]{
             R
-            -[:-30,\bb_length]C
+            -[:-30,\bb_length]{C'}
             (=[6,\bb_length]O)
             -[:30,\bb_length]N
-            (-[2,\h_length]H)
-            -[@{f, 0.5}:-30,\bb_length]{{C\alpha}}
-            (<[:-60,\h_length]{{H\alpha}})
+            (-[2,\h_length]{HN})
+            -[@{f, 0.4}:-30,\bb_length]@{ca}{C\alpha}
+            (<[:-60,\h_length]{H\alpha})
             (
-                <:[@{x, 0.5}:-120,\vert_length]{{C\beta}}
-                -[:-60,\bb_length]{{C\gamma}}
+                <:[@{x, 0.5}:-120,\vert_length]{C\beta}
+                -[:-60,\bb_length]{C\gamma}
             )
-            -[@{y, 0.5}:30,\bb_length]C
+            -[@{y, 0.4}:30,\bb_length]{C'}
             (=[2,\bb_length]O)
             -[:-30,\bb_length]N
-            (-[6,\h_length]H)
+            (-[6,\h_length]{HN})
             -[:30,\bb_length]R
         }
         \chemmove{
-            \draw (f) .. controls +(45:0.5 cm) and +(-105:0.5 cm) .. (f);
-            \node [above = of f] {$\phi$};
-            \draw (y) .. controls +(105:0.5 cm) and +(-45:0.5 cm) .. (y);
-            \node [above = of y] {$\psi$};
-            \draw (x) .. controls +(-45:0.5 cm) and +(165:0.5 cm) .. (x);
-            \node [left = of x] {$\chi_1$};
+            \draw (f) .. controls +(45:0.75 cm) and +(-105:0.75 cm) .. (f);
+            \node [above = of ca, xshift = -0.375 cm, yshift = 0.125 cm] {$\phi$};
+            \draw (y) .. controls +(105:0.75 cm) and +(-45:0.75 cm) .. (y);
+            \node [above = of ca, xshift = 0.375 cm, yshift = 0.125 cm] {$\psi$};
+            \draw (x) .. controls +(-45:0.75 cm) and +(165:0.75 cm) .. (x);
+            \node [left = of x, yshift = 0.125 cm] {$\chi_1$};
         }
     };
 \end{tikzpicture} \par}
