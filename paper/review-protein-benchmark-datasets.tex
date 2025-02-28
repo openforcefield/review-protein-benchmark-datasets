@@ -449,7 +449,14 @@ There are also one-bond $^1J$ and two-bond $^2J$ scalar couplings, which can hav
 Karplus equation coefficients used in conformational analyses are generally empirically determined, based on measurements of $J$-coupling constants in molecules of known structure, and then transferred to analyze the dihedral angles between nuclei in similar chemical environments \cite{karplus_contact_1959,karplus_vicinal_1963,haasnoot_relationship_1980,wang_determination_1996,vogeli_limits_2007}.
 For a given pair of coupled nuclei, the experimentally observed $J$-coupling is the probability-weighted average of their instantaneous coupling over the molecule’s thermalized conformational distribution.
 
-In proteins and peptides, the $^3J$-couplings between backbone amide protons and alpha protons ($^3J_{\mathsf{HN-H\alpha}}$) report on the $\phi$ dihedral angle of the peptide backbone and thus distinguish between $\alpha$ and $\beta$ secondary structure.
+\begin{figure}[t]
+    \centering
+    \label{fig:dihedrals}
+    \includegraphics[width=3 in]{paper/figures/protein-dihedrals.pdf}
+    \caption{Atom names and named dihedral angles associated with commonly measured $^3J$-couplings in a typical amino acid.}
+\end{figure}
+
+In proteins and peptides, the $^3J$-couplings between backbone amide protons and alpha protons ($^3J_{\mathsf{HN-H\alpha}}$) report on the $\phi$ dihedral angle of the peptide backbone (Fig. \ref{fig:dihedrals}) and thus distinguish between $\alpha$ and $\beta$ secondary structure.
 These couplings were adopted as structural restraints in early NMR protein structure calculations \cite{pardi_calibration_1984}.
 The values of the Karplus coefficients for these $^3J$-coupling constants have been the subject of frequent reexamination and scrutiny \cite{case_static_2000,lindorff-larsen_interpreting_2005,altona_vicinal_2007,vogeli_limits_2007,wang_quantum_2013,lee_quantitative_2015,li_high_2015}, including studies that examine the consequences of harmonic motion and conformational dynamics \cite{brueschweiler_adding_1994,case_static_2000,lindorff-larsen_interpreting_2005,vogeli_limits_2007,lee_quantitative_2015}.
 Although $^3J_{\mathsf{HN-H\alpha}}$ are the most frequently measured and reported $^3J$-couplings for the protein backbone, five additional coupling constants also report on the $\phi$ dihedral angle \cite{schmidt_self-consistent_1999}: $^3J_{\mathsf{HN-C’}}$, $^3J_{\mathsf{HN-C\beta}}$, $^3J_{\mathsf{C’(i-1)-H\alpha}}$, $^3J_{\mathsf{C’(i-1)-C’}}$, and $^3J_{\mathsf{C’(i-1)-C\beta}}$.
@@ -546,8 +553,15 @@ In NMR spectroscopy, the environment surrounding a system of spins is called the
 Thus, dipolar cross relaxation is driven by changes in the motions of the lattice, e.g. a change in orientation due to molecular tumbling or an internal molecular motion.
 The NOE is a through-space, rather than through-bond, effect that is typically detectable only when the mean internuclear distance is less than \qty{0.6}{\nano\meter}.
 
+\begin{figure}[t]
+    \centering
+    \label{fig:noesy-2d}
+    \includegraphics[width=3 in]{paper/figures/noesy-2d.png}
+    \caption{Schematic depiction of a simplified two-dimensional NOESY spectrum. The one-dimensional spectrum along the top and right contains peaks for four hydrogen nuclei. Apart from the self-peaks along the diagonal, there are cross peaks between two pairs of nuclei. The volume of the cross peaks indicates a strong interaction between the first and third nuclei and a weak interaction between the second and fourth nuclei.}
+\end{figure}
+
 NOEs for proteins are typically measured using a two-dimensional nuclear Overhauser effect spectroscopy (NOESY) experiment, in which one dimension corresponds to the chemical shift of the saturated nucleus, 1 and the second dimension corresponds to the chemical shift of the observed nucleus, 2.
-The intensity of the NOE between two nuclei is measured as the integral of the cross peak located at (1,2) in the two-dimensional NOESY spectrum.
+The intensity of the NOE between two nuclei is measured as the integral of the cross peak located at (1,2) in the two-dimensional NOESY spectrum (Fig. \ref{fig:noesy-2d}).
 This integral is proportional to the time elapsed between the saturation and observation pulses, i.e. the mixing time.
 
 NOESY experiments for proteins report on the average, or effective, distances between pairs of nuclei, where the averages are taken over the the mixing time of the NOESY experiment, and the form of the average is determined by the time scales of intramolecular vs overall motions of the protein \cite{neuhaus_nuclear_2000,vogeli_nuclear_2014}.
@@ -824,11 +838,19 @@ Thus, although most crystallographic data available in the Protein Data Bank (PD
 Neutron diffraction crystallography (Section \ref{sub2:neutron}), which also can be carried out at room temperature, goes beyond X-ray crystallography because it can resolve the positions of hydrogen atoms in protein structures.
 However, there are not many neutron diffraction structures in the PDB as there are not many suitable neutron sources where these studies can be done, in addition to requiring large crystals suitable for data collection.
 
+\begin{figure}[t]
+    \centering
+    \label{fig:supercell}
+    \includegraphics[width=\linewidth]{paper/figures/janowski-2016-fig-1.jpg}
+    \caption{A 3 $\times$ 2 $\times$ 2 supercell containing 12 independent copies of hen egg white lysozyme.
+    Adapted from Janowski et al. \cite{janowski_molecular_2016}.}
+\end{figure}
+
 Water typically occupies about 50\% of a protein crystal’s volume \cite{altan_learning_2018}, so crystallized proteins are usually quite well-solvated.
 Nonetheless, the conformational distribution of a crystallized protein is likely to differ from that of the same protein in solution, due to protein-protein contacts, perturbations of water structure, and the presence of cosolutes added to facilitate crystallization.
 Therefore, when one uses crystallographic data to benchmark molecular simulations, one should simulate the crystal, rather than the protein in solution.
 Crystal simulations with periodic boundary conditions can in principle be used to simulate a single unit cell, but this does not allow variations between adjacent lattice positions.
-Therefore, it is preferable to simulate a supercell comprising multiple unit cells which can sample such lattice variations.
+Therefore, it is preferable to simulate a supercell comprising multiple unit cells which can sample such lattice variations (Fig. \ref{fig:supercell}).
 This requirement adds complexity and can lead to larger and hence slower simulations than those used with NMR benchmark data, depending on whether the size of the supercell exceeds the size of the simulation box for the solvated system.
 At the same time, the extra copies of the protein in supercell simulations often can be included in computing statistical averages, enabling some analyses to be performed using shorter simulation durations than for conventional solution simulations. 
 Different proteins, and even different crystal structures of the same protein, have different levels and characters of both conformational variation and experimental error.
@@ -1004,11 +1026,23 @@ There are three RT crystal structures of the triclinic form (P1 space group) of 
 Nitrate ions predominate in neutralizing the protein, and a large number of solvent waters are visible in the experimental electron density.
 The crystal density of the solvent has been determined to high precision \cite{moreau_ice_2020} and is very close to that estimated by the MD simulations discussed below; this suggests that we know the amount of water in the unit cell to within an uncertainty of just a few water molecules. 
 
+\begin{figure}[t]
+    \centering
+    \label{fig:hewl-xtal-rmsf}
+    \includegraphics[width=\linewidth]{paper/figures/janowski-2016-fig-4c.pdf}
+    \caption{
+        Refined C-alpha carbon root-mean-square fluctuations for four crystal simulations, compared to experiment (black).
+        Red: ff14SB, blue: CHARMM36; cyan: ff14ipq; green: ff99SB. 
+        The colored band across the top describes the secondary structure (T: turn, E: b-sheet, H: a-helix, G:310 helix, B:isolated bridge).
+        Adapted from Janowski et al. \cite{janowski_molecular_2016}.
+    }
+\end{figure}
+
 Two MD simulations of the triclinic HEWL crystal provide guidance for future studies.
 First, Janowski et al. \cite{janowski_molecular_2016} simulated a triclinic supercell with 12 protein chains and made extensive comparisons to the reflection intensities from 4LZT.
 Perhaps most insightful was a comparison of two newly-refined atomic models, one refined against the experimental data and a second refined against the average electron density from a three-microsecond MD simulation.
 The backbone of the structure refined against the simulated density was about \qty{0.04}{\nano\meter} away from the experimental structure, which is well outside the expected coordinate uncertainty of \qty{0.01}{\nano\meter} for a static crystal model, but small compared to differences between structural models of the same protein derived from crystal data in different space groups \cite{kovalevskiy_alphafold_2024}.
-Additionally, B-factors were in good agreement between the two refinements, aside from a small region near the N-terminus.
+Additionally, B-factors were in good agreement between the two refinements, aside from a small region near the N-terminus (Fig. \ref{fig:hewl-xtal-rmsf}).
 Comparisons among four protein force fields showed small but significant differences in how close the structures refined against simulated densities and the B-factors computed from simulations were to the experimental structures and B-factors.
 Second, Meisburger et al. \cite{meisburger_diffuse_2020} simulated triclinic HEWL with a primary focus on interpreting diffuse X-ray intensities.
 Since collective motions of many protein chains are important for diffuse scattering, simulations were carried out using 1, 27, 125, and 343 unit cells, but they used only a single protein force field, so this study did not address the suitability of diffuse scattering for force field benchmarking.
