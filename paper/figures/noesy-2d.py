@@ -72,6 +72,11 @@ def main():
             labelleft=False,
         )
 
+    # Remove frame from top and right plots
+    for axes in top_axes, right_axes:
+        for line in ["top", "right", "bottom", "left"]:
+            axes.spines[line].set_visible(False)
+
     # Create a contour plot for the 2-D spectrum in the main axes
     levels = [1E-6, 1E-4, 1E-2, 0.5]
     contours = main_axes.contour(x, x, two_d_spectrum, levels, colors="black", linewidths=0.5)

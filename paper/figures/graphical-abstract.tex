@@ -1,0 +1,49 @@
+\documentclass[12pt]{article}
+\usepackage[T1]{fontenc} % font encoding for non-English characters
+\usepackage[margin = 0 in, paperwidth = 6.5 in, paperheight = 6.5 in]{geometry} % margins
+\usepackage{graphicx} % figures
+\usepackage[utf8]{inputenc} % input encoding for unicode characters
+\usepackage{tikz} % image positioning
+\usepackage{xcolor} % colors
+
+% LiveCoMS font
+    \RequirePackage[no-math]{fontspec}
+    \setmainfont[Ligatures = TeX,
+    Extension = .ttf,
+    UprightFont = *-Regular,
+    BoldFont = *-Bold,
+    ItalicFont = *-Italic,
+    BoldItalicFont = *-BoldItalic]
+    {OpenSans}
+% other options
+    \graphicspath{{./images}}
+    \usetikzlibrary{shapes.geometric, arrows, positioning}
+    \renewcommand{\familydefault}{\sfdefault}
+    \renewcommand{\footnoterule}{}
+    \let\thefootnote\relax
+	\setlength{\parindent}{0pt}
+    \pagenumbering{gobble}
+
+\begin{document}
+
+% Use \phantom{p} to increase spacing between text lines for nodes without letters before the baseline
+{\centering \small \begin{tikzpicture}[node distance = 0 in, inner sep = 0 in]
+    \node (ramachandran) {
+        \includegraphics[height = 0.4 \linewidth]{ff14SB-ala-rotamer-1-qm-energy.pdf}
+    };
+    \node (noesy) [below = of ramachandran, xshift = -0.3 \linewidth, yshift = -0.1 \linewidth] {
+        \includegraphics[width = 0.4 \linewidth]{noesy-2d.png}
+    };
+    \node (supercell) [below = of ramachandran, xshift = 0.3 \linewidth, yshift = -0.1 \linewidth] {
+        \includegraphics[width = 0.4 \linewidth]{4lzt-supercell.png}
+    };
+    \node [text centered, align = center, below = of ramachandran] {\Huge \phantom{p} Protein \phantom{p}\\\Huge Force Field};
+    \node [text centered, align = center, below = of noesy] {\Huge \phantom{p} NMR \phantom{p}\\\Huge Spectroscopy};
+    \node [text centered, align = center, below = of supercell] {\Huge Room-Temperature\\\Huge Crystallography};
+    \node (left) [xshift = 0.075 \linewidth] at (ramachandran.south west) {};
+    \node (right) [xshift = -0.075 \linewidth] at (ramachandran.south east) {};
+    \draw [ultra thick, {Stealth[scale=1.5]}-{Stealth[scale=1.5]}] (left) -- (noesy);
+    \draw [ultra thick, {Stealth[scale=1.5]}-{Stealth[scale=1.5]}] (right) -- (supercell);
+\end{tikzpicture} \par}
+
+\end{document}

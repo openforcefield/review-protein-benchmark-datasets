@@ -71,19 +71,19 @@ The Center for Nonlinear Studies, Los Alamos National Laboratory, Los Alamos, NM
 \corr{mgilson@health.ucsd.edu}{MKG}
 
 \orcid{Chapin E. Cavender}{0000-0002-5899-7953}
-\orcid{David A. Case}{}
-\orcid{Julian C.-H. Chen}{}
-\orcid{Lillian T. Chong}{}
-\orcid{Daniel A. Keedy}{}
-\orcid{Kresten Lindorff-Larsen}{}
-\orcid{David L. Mobley}{}
-\orcid{O.H. Samuli Ollila}{}
-\orcid{Chris Oostenbrink}{}
-\orcid{Paul Robustelli}{}
-\orcid{Vincent A. Voelz}{}
-\orcid{Michael E. Wall}{}
-\orcid{David C. Wych}{}
-\orcid{Michael K. Gilson}{}
+\orcid{David A. Case}{0000-0003-2314-2346}
+\orcid{Julian C.-H. Chen}{0000-0003-0341-165X}
+\orcid{Lillian T. Chong}{0000-0002-0590-483X}
+\orcid{Daniel A. Keedy}{0000-0002-9184-7586}
+\orcid{Kresten Lindorff-Larsen}{0000-0002-4750-6039}
+\orcid{David L. Mobley}{0000-0002-1083-5533}
+\orcid{O.H. Samuli Ollila}{0000-0002-8728-1006}
+\orcid{Chris Oostenbrink}{0000-0002-4232-2556}
+\orcid{Paul Robustelli}{0000-0002-9282-8993}
+\orcid{Vincent A. Voelz}{0000-0002-1054-2124}
+\orcid{Michael E. Wall}{0000-0003-1000-688X}
+\orcid{David C. Wych}{0000-0001-9209-4371}
+\orcid{Michael K. Gilson}{0000-0002-3375-1738}
 
 \blurb{This LiveCoMS document is maintained online on GitHub at \githubrepository; to provide feedback, suggestions, or help improve it, please visit the GitHub repository and participate via the issue tracker.}
 
@@ -388,7 +388,7 @@ For example, the standard deviation of C$\alpha$ shift predictions made by SPART
 Second, as noted above, the chemical shifts of the backbone nuclei (atom types C$\alpha$, C$\beta$, C$'$, N, HN, H$\alpha$) of each residue type have large baseline offsets, $\delta_{\mathsf{random}}$, which are determined by chemical identity, i.e. by their covalent structure rather than by any time-dependent conformational variation that might be sampled in a simulation \cite{schwarzinger_sequence-dependent_2001,de_simone_accurate_2009,tamiola_sequence-specific_2010,kjaergaard_sequence_2011}.
 The random coil shifts of a given backbone atom type can vary more strongly across residue types (e.g. ~50 ppm for C$\beta$ between Ala and Thr \cite{kjaergaard_disordered_2012}) than across residues of a given type (e.g. 3 ppm to 5 ppm for Ala C$\beta$ atoms) due to conformational variations \cite{ulrich_biomagresbank_2008,romero_biomagresbank_2020}.
 As a result, it can be highly misleading to visualize correlations and report correlation coefficients between experimental chemical shifts and shifts predicted from MD simulations, as most of the magnitude in deviation between different residues can be explained by differences in their baseline $\delta_{\mathsf{random}}$ values.
-Indeed, extremely high correlation coefficients (close to 1.0) can be obtained by comparing experimental chemical shifts to database random coil chemical shift values without utilizing any structural information.
+Indeed, extremely high correlation coefficients (close to 1.0) can be obtained by comparing experimental chemical shifts to database random coil chemical shift values without utilizing any structural information \cite{de_simone_accurate_2009,kohlhoff_fast_2009,shen_sparta_2010,han_shiftx2_2011}.
 A more informative visualization of the accuracy of chemical shift predictions from an MD simulation is provided by comparing the deviations between predicted and experimental shifts separately for each residue type.
 Alternatively, one can compare predicted and experimental “secondary” chemical shifts, which subtract the random coil chemical shift values from both experimental and predicted shifts and thus put all residues on comparable footing.
 
@@ -415,7 +415,7 @@ Therefore, when several different force fields yield predicted chemical shifts f
 
 Seventh, there is not a one-to-one mapping between conformational distributions and chemical shifts \cite{ozenne2012mapping}. As a consequence, many different conformational ensembles can produce equivalent agreement with experiment \cite{wood_secondary_2011,virtanen_heterogeneous_2020,shrestha_full_2021}.
 For example, the same C$'$ chemical shift prediction can be obtained from many different $\phi$/$\psi$ dihedral distributions; and two ensembles with extremely different $\phi$/$\psi$ dihedral distributions for a given residue can produce identical chemical shift predictions for a C$\alpha$ atom if, for example, it is exposed to an aromatic ring current in one ensemble and not the other.
-{\bf The degeneracy between conformations and chemical shifts can often be resolved by analyzing the chemical shifts of multiple nuclei.}
+The degeneracy between conformations and chemical shifts can often be resolved by analyzing the chemical shifts of multiple nuclei.
 
 Eighth, different programs for predicting chemical shifts tend to yield very similar results, so the choice of method is not expected to have much effect on conclusions.
 However, some chemical shift predictors utilize sequence homology for part or all of their predictions, and a prediction based on sequence homology rather than three-dimensional structure \emph{ipso facto} does not report on the accuracy of a structure.
@@ -432,7 +432,8 @@ Two examples of structural models that can be used in this way, helical propensi
 
 Accurate protein force fields should be able to model the preferences for proteins to adopt particular secondary structures.
 Helical propensity in a particular sequence context is often modeled using the expected fraction of time that a particular non-terminal residue adopts an $\alpha$-helical backbone conformation, and the fractional helicity of a residue can be measured because $\alpha$-helical residues form backbone hydrogen bonds that alter the chemical shift of the C$'$ carbons in $^{13}$C-labeled proteins \cite{shalongo_distribution_1994}.
-(We note here that this commonly used dataset was measured in D$_2$O as a solvent).
+We note here that this commonly used dataset was measured in D$_2$O as a solvent.
+Since the helicity will likely be different in H$_2$O and D$_2$O \cite{shi2002d}, one should not expect perfect agreement in simulations with water models that represent H$_2$O.
 Assuming a two-state helix-coil transition, the helical fraction can be calculated using
 
 \begin{equation}
@@ -481,7 +482,7 @@ The $\chi_1$ angles of protein sidechains can be analyzed via the following $^3J
 Additionally, $^3J_{\mathsf{HN-C'}}$ hydrogen bond scalar couplings (scalar couplings between protein backbone nitrogen and carbonyl atoms in different residues that are mediated through hydrogen bonds) provide quantitative information about hydrogen bond geometries \cite{barfield_structural_2002}.
 Once Karplus coefficients are known, no specialized software is required to compute scalar couplings for a protein structure.
 One simply needs to calculate the dihedral angles of interest and use them to predict the corresponding scalar couplings via the Karplus relationship applied with the appropriate Karplus coefficients.
-Special attention, however, is needed to ensure correct mapping to the correct atoms in cases when stereospecific assignments are available.
+Special attention, however, is needed to ensure correct mapping to the correct atoms in cases when stereospecific assignments are available so that, for example, the same definition of the atoms are used in experiments and simulations.
 
 \paragraph{Evaluation of force fields using scalar couplings}
 
@@ -538,7 +539,7 @@ The dipolar coupling measured in a weakly aligned sample is called a residual di
 RDCs are often measured between atoms that are directly bonded.
 In proteins, these are often an amide proton and nitrogen, resulting in a $^1D_{\mathsf{NH}}$ RDC, but it is also possible to measure RDCs between nuclei that are not directly bonded.
 Although the alignment procedure could in principle perturb the protein’s conformational ensemble, consistency across different methods for alignment suggests this is not a substantial concern \cite{lakomek2008self}.
-Alternatively, one can avoid such artifacts by rotating the magnetic field instead \cite{pechlaner_molecular_2024}.
+%Alternatively, one can avoid such artifacts by rotating the magnetic field instead \cite{pechlaner_molecular_2024}.
 
 \paragraph{Evaluation of MD simulations using residual dipolar couplings}
 
@@ -557,7 +558,7 @@ While it is possible to predict alignment for the full chain, sometimes local al
 RDCs have been used extensively to benchmark protein force fields \cite{lange2010scrutinizing,lindorff-larsen_improved_2010,lindorff2012systematic,robustelli_developing_2018}, as they offer a number of advantages.
 In particular, they can be measured very precisely \cite{chiliveri2021advances}, they are averaged over long time scales and thus report on conformational ensembles \cite{lakomek2008self}, and they can be measured for multiple bonds in both the backbone and side chains \cite{chiliveri2021advances}.
 
-%[Can we say something about experimental uncertainties for RDCs, as done for chemical shifts and scalar couplings?-- Mike]
+Because the magnitudes of the RDCs depend on the alignment strength \cite{tjandra_direct_1997,trigo-mourino_structural_2011}, the quality of agreement between experiments and simulations is typically evaluated in terms of a normalized RMSD (the quality factor, $Q$ \cite{cornilescu_validation_1998}), with high-resolution crystal structures typically having $Q<25$\% \cite{bax2003weak}.
 
 \subsubsection{Nuclear Overhauser effect spectroscopy}
 \label{sub2:noesy}
@@ -753,8 +754,7 @@ While PREs can be measured relatively accurately, a number of issues complicates
 First, unless the spin-label is modeled explicitly, there may be uncertainty regarding the degree to which the spin label affects the protein \cite{sasmal2017effect,tesei_deer-predict_2021}.
 Second, PREs are often probed indirectly via measurements of intensity ratios, limiting accuracy and interoperability \cite{clore2009theory}.
 Finally, unless the timescales of motions are calculated directly from the simulations \cite{xue2011motion}, calculations of PREs require either estimating \cite{tesei_deer-predict_2021} or fitting \cite{tesei2021accurate} the time-scales, approaches that introduce uncertainty.
-
-%[Is there an accepted figure of merit for the agreement of computed PREs with experiment?-- Mike]
+Due to these complications, the root mean square error between simulated and experimental values (PREs directly or, indirectly, effective distances or order parameters) should be compared between simulations of the same protein with different force fields but should not be compared between simulations of different proteins.
 
 \subsection{NMR datasets}
 \label{sub:nmr_data}
@@ -793,7 +793,7 @@ Pseudoatom corrections were applied in this way to six of the nine proteins with
 For two of the remaining three proteins, no information on any pseudoatom corrections to the NOE-derived upper bounds could be found, and so the NOE restraints reported for these proteins may be less rigorous.
 For the third, mercury binding protein from \textit{Shigella flexneri} (PDB-code 1AFI), a large number of violations in NOEs assigned to Phe47 were observed in initial simulations.
 Inspection of the structure and the violations points to wrongly assigned explicit phenyl ring hydrogens HE1/2 and HD1/2.
-Replacing the assignment of these protons on the symmetrical phenyl ring by pseudoatoms HE* and HD*, and adding the appropriate pseudoatom corrections \cite{wuthrich_nmr_1986} removed all violations above 0.05 nm \cite{setz_molecular_2018}.
+Replacing the assignment of these protons on the symmetrical phenyl ring by pseudoatoms HE* and HD*, and adding the appropriate pseudoatom corrections \cite{wuthrich_nmr_1986} removed all violations above 0.05 nm \cite{stroet_validation_2024}.
 
 \subsubsection{Mao folded proteins}
 \label{sub2:mao}
@@ -858,7 +858,7 @@ Here, the results were significantly improved by atomic charge derivation strate
 The earliest protein crystal structures were determined by X-ray diffraction for specimens at or near room temperature \cite{muirhead_structure_1963}.
 Later, methods of working with protein crystals at low temperature were widely adopted for their practical advantages, such as slowed radiation damage of the crystal specimen \cite{fischer_macromolecular_2021,thorne_determining_2023}.
 More recently, however, there has been a revival of interest in room temperature protein crystallography, because it gives insight into molecular motions that are quenched at cryogenic temperatures \cite{fraser_hidden_2009,keedy_crystal_2014,fischer_macromolecular_2021,thorne_determining_2023}.
-At cryogenic temperatures, there is little motion to simulate, and it is also not clear that the conformational variability observed at cryogenic temperatures corresponds to a well-defined thermodynamic ensemble at any particular temperature \cite{keedy_crystal_2014,cbradford_temperature_2021}.
+At cryogenic temperatures, there is little motion to simulate, and it is also not clear that the conformational variability observed at cryogenic temperatures corresponds to a well-defined thermodynamic ensemble at any particular temperature \cite{keedy_crystal_2014,bradford_temperature_2021}.
 In contrast, the conformational variability observed by RT crystallography is more clearly attributable to room temperature thermal motions.
 Thus, although most crystallographic data available in the Protein Data Bank (PDB) were measured at cryogenic temperatures, the PDB contains a growing number of room temperature structures.
 Neutron diffraction crystallography (Section \ref{sub2:neutron}), which also can be carried out at room temperature, goes beyond X-ray crystallography because it can resolve the positions of hydrogen atoms in protein structures.
@@ -970,7 +970,7 @@ A crystal structure model that contains alternate conformations is termed a mult
 
 Alternate conformations are often left unmodeled in crystal structure models even when they are evident in the electron density maps \cite{lang_automated_2010}.
 Such missing alternate conformations can be modeled in an automated and unbiased manner with tools such as the qFit software \cite{riley_qfit_2021}, and MD simulations of protein crystals can be used to find alternate conformations that are missed by such automated methods \cite{wych_molecular-dynamics_2023}.
-Alternate conformations are significantly more prevalent at RT than at cryogenic temperatures (cryo) \cite{fraser_accessing_2011}, and some alternate conformations that are observed only at RT and not at cryo are critical to biological function \cite{fraser_hidden_2009} (see Section \ref{sub2:cypa}) and can modulate ligand binding in important ways \cite{cbradford_temperature_2021}.
+Alternate conformations are significantly more prevalent at RT than at cryogenic temperatures (cryo) \cite{fraser_accessing_2011}, and some alternate conformations that are observed only at RT and not at cryo are critical to biological function \cite{fraser_hidden_2009} (see Section \ref{sub2:cypa}) and can modulate ligand binding in important ways \cite{bradford_temperature_2021}.
 Thus, RT crystallography can reveal biologically relevant conformational heterogeneity.
 
 When different parts of a biomolecule have alternate conformations, these conformations may not be mutually independent.
@@ -985,7 +985,7 @@ The corresponding alternate conformations might be coupled, uncoupled, or partia
 The fractional occupancies of alternate conformations inferred from RT crystallography can be readily compared with the corresponding results from a simulation.
 Conformational probabilities can be extracted from simulations based on the occupancy of rotameric energy wells, e.g. the rotamer name strings \cite{lovell_penultimate_2000} that are output by software such as the model validation suite MolProbity \cite{williams_molprobity_2018} or the related tool \verb|phenix.rotalyze| from PHENIX \cite{liebschner_macromolecular_2019}.
 A figure of merit for the ability to reproduce alternate conformations could be the root-mean-square error between rotamer probabilities from simulations and experimental occupancies of alternate conformers, although future studies could explore more sophisticated approaches.
-Note that there are datasets where occupancies have been shown to vary with temperature \cite{cbradford_temperature_2021}.
+Note that there are datasets where occupancies have been shown to vary with temperature \cite{bradford_temperature_2021}.
 In addition, the coordinates and occupancies of alternate conformations can be combined with B-factors to calculate so-called crystallographic order parameters, which may be compared with experimental NMR order parameters \cite{fenwick_integrated_2014}; a similar framework could be useful for comparing RT crystallographic models to simulations.
 
 When comparing computed and observed populations, it is important to bear in mind that small changes in the free energy difference between two conformations will lead to large changes in occupancy if the free energy difference is near zero, but essentially no change if the free difference is far from zero.
@@ -1012,9 +1012,9 @@ Future crystal simulations should help clarify whether diffuse scattering data c
 Protein X-ray crystallography generally resolves the coordinates only of atoms with atomic number greater than one; hydrogens are visible only in well-ordered regions of ultra-high resolution structures.
 This is because X-rays are scattered by electrons, and a hydrogen atom, with only one electron, scatters only weakly.
 In contrast, neutrons are scattered by atomic nuclei, and hydrogen atoms have high scattering cross-sections.
-As a consequence, neutron diffraction protein crystallography can provide experimental information on hydrogen atom positions and protonation states.
+As a consequence, neutron diffraction protein crystallography can provide experimental information on hydrogen atom positions and protonation states \cite{blakeley_neutron_2009,ashkar_neutron_2018}.
 These data are valuable because hydrogens make up nearly half the atoms in proteins and can play critical functional and structural roles \cite{word_asparagine_1999,word_visualizing_1999}.
-Thus, neutron diffraction studies are uniquely suited to discern hydrogen bonding patterns, the orientations of solvents and side chain groups, and the protonation states of critical catalytic amino acids---such as the histidine in the catalytic triad of a serine protease.
+Thus, neutron diffraction studies are uniquely suited to discern hydrogen bonding patterns \cite{chen_direct_2012,nakamura_newtons_2015}, the orientations of solvents and side chain groups \cite{blakeley_15-k_2004,wall_biomolecular_2019}, and the protonation states of critical catalytic amino acids---such as the histidine in the catalytic triad of a serine protease \cite{kossiakoff_neutron_1980,kossiakoff_direct_1981}.
 By the same token, they provide distinctive information to benchmark protein force fields.
 
 Neutron diffraction is generally weak, and therefore requires large crystals and long data collection times.
@@ -1075,10 +1075,11 @@ There are also RT crystal structures for two other crystal forms---orthorhombic 
 The small hydrophobic protein crambin, isolated from the seeds of the Abyssinian cabbage (\textit{Crambe abyssinica}), was found early on to form exceptionally well-ordered crystals \cite{teeter_water_1984} and has been used for the development of experimental phasing techniques.
 Crambin has only 46 residues, contains both $\alpha$-helical and $\beta$-strand secondary structure, and is held together by disulfide bridges.
 Of note here is a study combining RT X-ray and neutron diffraction to \qty{0.11}{\nano\meter} resolution (3U7T) and allowing for the modeling of anisotropic displacement parameters for select hydrogen atoms \cite{chen_room-temperature_2012}.
-More recently, a new dataset of crambin was collected at RT to \qty{0.070}{\nano\meter} (9EWK), and the model refined to a R of 0.0591 / 0.0759 (F > 4s / all F), with stereochemical restraints released during the refinement process.
-This is the best refined structure in the PDB.
-The bond esd for C-C bonds was \qty{1.6}{\pico\meter} overall (\qty{0.6}{\pico\meter} for ordered atoms), which compares favorably with those found in the Cambridge Structural Database (CSD) \cite{groom_cambridge_2016}, a database of small molecular crystals containing particularly reliable molecular geometries. 
-NMR data has also been reported on recombinantly expressed crambin.
+More recently, a new dataset of crambin was collected at RT to \qty{0.070}{\nano\meter} (9EWK), and the model refined to an R-factor of 0.0591 for reflections four standard deviations above background and of 0.0759 for all reflections, with stereochemical restraints released during the refinement process.
+This model has one of the lowest R-factors in the PDB.
+The estimated standard deviation for C-C bonds (a measure of the uncertainty in bond lengths for a model refined without restraints on bond lengths) was \qty{1.6}{\pico\meter} overall (\qty{0.6}{\pico\meter} for atoms with no alternate conformations).
+These estimated standard deviations are similar in magnitude to those found in the Cambridge Structural Database (CSD) \cite{groom_cambridge_2016}, a database of small molecular crystals containing particularly reliable molecular geometries. 
+NMR data has also been reported on recombinantly expressed crambin \cite{ahn_three-dimensional_2006}.
 
 \subsubsection{Cyclophilin A}
 \label{sub2:cypa}
@@ -1163,7 +1164,7 @@ Additional benchmarking studies could more closely focus on how well various for
 \label{sub2:staph_nuclease}
 
 Staphylococcal nuclease (SNase) has provided a particularly valuable dataset for diffuse scattering studies \cite{wall_three-dimensional_1997}.
-Until fairly recently, this was the only complete, high-quality, three-dimensional diffuse scattering dataset available for a protein crystal \cite{wall_conformational_2014}.
+Until fairly recently, this was the only complete, high-quality, three-dimensional (i.e. sampled on a 3-D reciprocal space grid using data from many diffraction images obtained at different crystal orientations) diffuse scattering dataset available for a protein crystal \cite{wall_conformational_2014}.
 Crystalline MD simulations greater than \qty{1}{\micro\second} in length allowed calculation of diffuse scattering intensity for direct comparison with experiment \cite{wall_conformational_2014}.
 More recent work \cite{wall_internal_2018} extended these simulations to cover a 2 $\times$ 2 $\times$ 2 supercell, with roughly \qty{5}{\micro\second} of data, and obtained improved agreement with experimental scattering data, perhaps because the simulations used a starting structure that modeled missing terminal residues and a bound ligand that better represented the system in the crystal experiment.
 Different force fields gave different levels of agreement with experimental diffuse scattering patterns \cite{wych_liquid-like_2019}, supporting the concept of using such data to benchmark protein force fields.
@@ -1198,11 +1199,11 @@ The consequences will be more pronounced for simulations of disordered proteins 
 In such applications, simulations using TIP3P should be expected to exhibit some disagreement with experiment due to the properties of the water model rather than the protein force field.
 
 For crystal simulations, the simplest setup is a periodic box containing a single unit cell from the crystal.
-A more complicated setup is a supercell in which the periodic simulation box includes multiple copies of the crystal unit cell that can move independently.
-Supercell simulations are more expensive by virtue of their larger size but better capture the lattice disorder caused by independent motions of molecules in adjacent unit cells.
-Ideally, one would choose the size of the supercell by running simulations of increasing size until the observables of interest stopped changing.
-However, this is a computationally demanding exercise, and we are not aware of a study of this type.
-As a consequence, the size of the supercell is typically chosen based on physical intuition regarding the range of motional correlations.
+A single unit cell might be adequate for some Bragg data applications, or for modeling the isotropic component of diffuse scattering data. 
+Other applications might require a supercell in which the periodic simulation box includes multiple copies of the crystal unit cell that can move independently.
+For example, in diffuse scattering studies, using two copies of the unit cell along each lattice vector avoids artificial correlations between pairs of atoms that are separated by a distance smaller than the unit cell, and can substantially increase the agreement with the anisotropic component of diffuse scattering data \cite{wall_internal_2018}.
+An appropriate choice of the supercell also is required for direct comparison of simulations with the full set of diffuse scattering measurements: in general, a full dataset with $N_h$, $N_k$, and $N_l$ points sampled per reciprocal lattice vector along Miller indices $hkl$ can be simulated using a box with $N_h$, $N_k$, and $N_l$ copies of the unit cell along lattice vectors $\vec{a}$, $\vec{b}$, and $\vec{c}$.
+Representative lattices generated by this approach may be, e.g., 2$\times$2$\times$2 or 7$\times$7$\times$5.
 
 For dilute solution simulations, the periodic box should contain the protein and a large enough number of solvent molecules to effectively screen interactions between periodic images of the protein (see next paragraph).
 Many system-building tools provide automated methods to construct periodic boxes filled with pre-equilibrated solvent around a solute with the box geometry defined by user-provided shape and dimensions.
@@ -1271,7 +1272,7 @@ If benchmark simulations of a particular protein consistently fail to visit rele
 When comparing sets of simulations against experimental data, it is essential to determine whether the differences are statistically significant \cite{van_gunsteren_validation_2018}.
 Statistical uncertainties in simulated data are perhaps most reliable if obtained by running multiple independent simulations but can also be obtained by analysis of a single simulation \cite{grossfield_best_2019}.
 The raw experimental data also have uncertainties, and additional uncertainty may result from model assumptions, such as the values of the Karplus parameters for $^3J$-values or the representation of NOESY intensities as upper bounds to interatomic distances.
-When multiple proteins are simulated and several properties are considered, it may not be straightforward to determine if two sets of simulations are significantly different or even which simulation shows the overall better agreement with the available experimental data \cite{setz_molecular_2018,wassenaar_effect_2006,villa_how_2007}.
+When multiple proteins are simulated and several properties are considered, it may not be straightforward to determine if two sets of simulations are significantly different or even which simulation shows the overall better agreement with the available experimental data \cite{wassenaar_effect_2006,villa_how_2007,stroet_validation_2024}.
 The differences in a particular property between different force fields will be affected by both the variability due to the choice of protein and the variability between independent replicate simulations.
 A statistical approach that takes mixed effects explicitly into account \cite{stroet_validation_2024} may be most appropriate.
 
@@ -1297,7 +1298,7 @@ Contributions to the initial draft of the manuscript were as follows:
     \item Section \ref{sub2:bragg} on Bragg diffraction by D.A.C.
     \item Section \ref{sub2:b_factors} on B-factors by J.C.-H.C.
     \item Section \ref{sub2:alt_confs} on alternate conformations by D.A.K.
-    \item Section \ref{sub2:diffuse} on diffuse scattering by M.E.W. and D.C.W.
+    \item Section \ref{sub2:diffuse} on diffuse scattering by M.E.W., D.C.W. and D.A.C.
     \item Section \ref{sub2:neutron} on neutron diffraction by J.C.-H.C.
     \item Section \ref{sub2:scorption_toxin} on scorpion toxin by D.A.C.
     \item Section \ref{sub2:hewl} on lysozyme by D.A.C. and J.C.-H.C.
@@ -1325,7 +1326,8 @@ For a more detailed description of contributions from the community and others, 
 L.T.C. serves on the scientific advisory board of OpenEye Scientific Software and is an Open Science Fellow with Psivant Sciences.
 M.K.G. has an equity interest in and is a cofounder and scientific advisor of VeraChem LLC and a member of the Scientific Advisory Board of InCerebro Co., Ltd.
 D.L.M. serves on the scientific advisory boards of OpenEye Scientific Software and Anagenex, and is an Open Science Fellow with Psivant Sciences.
-M.E.W. has an equity interest in and is a consultant for Eli Lilly and Company
+M.E.W. is a consultant for Eli Lilly and Company.
+K.L.-L. holds stock options in and is a consultant for Peptone Ltd.
 
 \section*{Funding Information}
 
@@ -1346,7 +1348,9 @@ D.C.W. acknowledges support from the Center for Nonlinear Studies at Los Alamos 
 Laboratory (under US Department of Energy contract No. 89233218CNA000001 to Triad
 National Security).
 M.K.G. acknowledges funding from the National Institutes of Health (R01GM132386).
-
+Co-funded by the European Union (ERC, DynaPLIX, SyG-2022 101071843, to K.L.-L.).
+Views and opinions expressed are however those of the authors only and do not necessarily reflect those of the European Union or the European Research Council.
+Neither the European Union nor the granting authority can be held responsible for them.
 
 \section*{Author Information}
 \makeorcid
