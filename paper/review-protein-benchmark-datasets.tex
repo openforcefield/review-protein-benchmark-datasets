@@ -211,7 +211,7 @@ Staphylococcal nuclease \cite{wall_conformational_2014} & Electron density, B-fa
 Table \ref{tab:datasets} summarizes many existing experimental datasets---both NMR and 
 crystallographic---suitable for benchmark studies of protein force fields.
 We recommend that a minimal benchmark include at least one dataset containing peptides, folded proteins, and disordered proteins---because a generally applicable protein FF should work for all three cases.
-We further recommend using datasets that target the following observables, as listed in the fourth column of Table \ref{tab:datasets}:
+We further recommend using datasets that target the following observables, as listed in the second column of Table \ref{tab:datasets}:
 
 \begin{itemize}
 \item chemical shifts
@@ -785,7 +785,7 @@ Molecular simulations are now routinely able to access the microsecond timescale
 Stroet et al curated a dataset of 52 high resolution protein structures, ranging in size from 17 to 326 residues \cite{stroet_validation_2024}.
 All of the proteins are monomeric in solution, and none contain ligands or cofactors.
 13 protein models, ranging in size from 17 to 129 residues, were derived from NMR experiments.
-For nine of these, NMR observables including upper bounds for interatomic distances derived from NOE data, 3J-couplings, and RDCs are available, either from the PDB or from the Biological Magnetic Resonance Data Bank (BMRB) \cite{ulrich_biomagresbank_2008,romero_biomagresbank_2020,hoch_biological_2023}. This dataset, which is available from the Australasian Computational and Simulation Commons (ACSC) Molecular Simulation Data Repository \cite{mark_australasian_2022} at \url{https://molecular-dynamics.atb.uq.edu.au/collection/protein-force-field-validation-set}, was used to validate backbone torsional parameters \cite{diem_hamiltonian_2020} and to study the impact of nonbonded cutoff schemes on experimental observables \cite{diem_effect_2020}.
+For nine of these, NMR observables including upper bounds for interatomic distances derived from NOE data, $^3J$-couplings, and RDCs are available, either from the PDB or from the Biological Magnetic Resonance Data Bank (BMRB) \cite{ulrich_biomagresbank_2008,romero_biomagresbank_2020,hoch_biological_2023}. This dataset, which is available from the Australasian Computational and Simulation Commons (ACSC) Molecular Simulation Data Repository \cite{mark_australasian_2022} at \url{https://molecular-dynamics.atb.uq.edu.au/collection/protein-force-field-validation-set}, was used to validate backbone torsional parameters \cite{diem_hamiltonian_2020} and to study the impact of nonbonded cutoff schemes on experimental observables \cite{diem_effect_2020}.
 
 In preparing the dataset, Stroet et al curated the NOESY studies that provide interatomic distances derived from NOESY intensities but not the intensities themselves.
 Any pseudoatom corrections included in the experimental data were first removed, and then the pseudoatom corrections proposed by W\"{u}thrich \cite{wuthrich_nmr_1986} were applied.
@@ -806,7 +806,7 @@ These data have been used to assess the accuracy of NMR structures, X-ray struct
 
 Robustelli, Lindorff-Larsen, and co-workers assembled a dataset (\url{https://github.com/paulrobustelli/Force-Fields}) that spans 21 proteins and peptides with over 9,000 experimental data points and probes the ability of a protein force field to simultaneously describe the properties of folded proteins, weakly structured peptides, and disordered proteins with a range of residual secondary structure propensities \cite{lindorff-larsen_improved_2010,lindorff2012systematic,piana_water_2015,robustelli_developing_2018,piana_development_2020}.
 
-The dataset contains four fully folded proteins (ubiquitin, GB3, hen egg white lysozyme (HEWL), and bovine pancreatic trypsin inhibitor) with extensive NMR data, including backbone and sidechain J-couplings, RDCs, and backbone and side chain spin relaxation order parameters.
+The dataset contains four fully folded proteins (ubiquitin, GB3, hen egg white lysozyme (HEWL), and bovine pancreatic trypsin inhibitor) with extensive NMR data, including backbone and sidechain $J$-couplings, RDCs, and backbone and side chain spin relaxation order parameters.
 It also includes calmodulin and the bZip domain of the GCN4 transcription factor, both of which contain folded and flexible components.
 Calmodulin, which comprises two folded domains connected by a flexible linker, probes the ability of a force field to simultaneously describe the flexibility of the linker region, the stability of folded domains, and the propensity of the folded domains to associate.
 The NMR data for calmodulin comprise chemical shifts and RDCs.
@@ -815,7 +815,7 @@ The bZip domain of the GCN4 transcription factor is a partially disordered dimer
 The dataset also includes nine proteins that are disordered under physiological conditions and for which extensive sets of NMR data are available.
 These test the ability of a force field to accurately describe the dimensions and secondary structure propensities of intrinsically disordered proteins.
 The proteins range in size from 40 to 140 amino acids, which was important, as a number of force fields that produced reasonable dimensions for proteins containing <70 amino acids produced conformations that were substantially over-collapsed for longer sequences.
-The available NMR data for these disordered proteins include chemical shifts, RDCs, backbone J-couplings, and PREs.
+The available NMR data for these disordered proteins include chemical shifts, RDCs, backbone $J$-couplings, and PREs.
 Scalar couplings of the disordered Ala5 peptide were also included. 
 Code to calculate NMR and SAXS data for five IDPs in this benchmark (A$\beta$40, drkN SH3, ACTR, PaaA2 and $\alpha$-synuclein) is included in recent manuscript describing a maximum entropy reweighting approach to calculate conformational ensembles of IDPs from experimental data\cite{borthakur2024determining} (\url{https://github.com/paulrobustelli/Borthakur_MaxEnt_IDPs_2024}).  
 
@@ -1245,7 +1245,7 @@ Modeling co-solutes explicitly can improve the fidelity of benchmark simulations
 
 Because the observables of interest here are typically measured at constant pressure and temperature, benchmark simulations should sample from the isobaric-isothermal (NPT) ensemble.
 Some commonly used methods for controlling the pressure and temperature in simulations produce samples from different, unphysical ensembles.
-In particular, Berendsen or weak-coupling methods fail to preserve the equipartition of energy and can lead to artifacts such as flying ice cube effect \cite{harvey_flying_1998,braun_anomalous_2018}.
+In particular, Berendsen or weak-coupling methods fail to preserve the equipartition of energy and can lead to artifacts such as the flying ice cube effect \cite{harvey_flying_1998,braun_anomalous_2018}.
 These methods should be avoided in favor of methods that sample correctly from physical ensembles such as Langevin dynamics, the canonical velocity rescaling thermostat, and the Monte Carlo barostat.
 Additional care is needed when computing kinetic quantities, as some thermostats---most notably Langevin dynamics, with its added frictional damping and random forces---may introduce significant kinetic artifacts.
 
