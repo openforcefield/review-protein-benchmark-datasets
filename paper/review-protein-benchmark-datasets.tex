@@ -4,7 +4,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% PREAMBLE
 \RequirePackage[hyphens]{url}
-\documentclass[9pt,review,switch]{livecoms}
+%\documentclass[9pt,review,switch]{livecoms}
+\documentclass[9pt,review]{livecoms}
 % Use the 'onehalfspacing' option for 1.5 line spacing
 % Use the 'doublespacing' option for 2.0 line spacing
 % Use the 'lineno' option for adding line numbers.
@@ -106,7 +107,7 @@ The Center for Nonlinear Studies, Los Alamos National Laboratory, Los Alamos, NM
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
-\linenumbers
+%\linenumbers
 \begin{frontmatter}
 \maketitle
 
@@ -340,7 +341,7 @@ The structural features with the largest influence on the backbone nuclei of a g
 
 \begin{figure}[t]
     \centering
-    \includegraphics[width=3 in]{paper/figures/protein-dihedrals.pdf}
+    \includegraphics[width=3 in]{protein-dihedrals.pdf}
     \caption{Atom names and named dihedral angles associated with commonly measured chemical shifts and $^3J$-couplings in a typical amino acid.
     Side chain hydrogens such as $H\beta$ are omitted for clarity.}
     \label{fig:dihedrals}
@@ -596,7 +597,7 @@ This integral is proportional to the time elapsed between the saturation and obs
 
 \begin{figure}[t]
     \centering
-    \includegraphics[width=3 in]{paper/figures/noesy-2d.png}
+    \includegraphics[width=3 in]{noesy-2d.png}
     \caption{Idealized NOESY spectrum.
     The one-dimensional spectrum displayed along the top and right contains peaks for four hydrogen nuclei, labeled "A" through "D".
     Apart from the self-peaks along the diagonal, there are NOE cross peaks between two pairs of nuclei.
@@ -902,7 +903,7 @@ Methods of simulating protein crystals have been discussed in recent reviews \ci
 
 \begin{figure}[t]
     \centering
-    \includegraphics[width=\linewidth]{paper/figures/4lzt-supercell.png}
+    \includegraphics[width=\linewidth]{4lzt-supercell.png}
     \caption{A 3 $\times$ 2 $\times$ 2 supercell containing 12 independent copies of hen egg white lysozyme (4LZT \cite{walsh_refinement_1998}), each colored differently from its neighbors.
     Black lines represent cell boundaries of the triclinic unit cell.}
     \label{fig:supercell}
@@ -1082,7 +1083,7 @@ In addition, simulations using four protein force fields showed systematic diffe
 
 \begin{figure*}
     \centering
-    \includegraphics[width=\linewidth]{paper/figures/janowski-2016-fig-4c.pdf}
+    \includegraphics[width=\linewidth]{janowski-2016-fig-4c.pdf}
     \caption{Refined C$\alpha$ root-mean-square fluctuations for four crystal simulations of HEWL, compared to experiment (black).
     Red: ff14SB, blue: CHARMM36, cyan: ff14ipq, green: ff99SB. 
     The colored band across the top describes the secondary structure (T: turn, E: $\beta$-sheet, H: $\alpha$-helix, G: $3_{10}$ helix, B: isolated bridge).
