@@ -5,7 +5,7 @@
 %%% PREAMBLE
 \RequirePackage[hyphens]{url}
 %\documentclass[9pt,review,switch]{livecoms}
-\documentclass[9pt,review]{livecoms}
+\documentclass[9pt,review,pubversion]{livecoms}
 % Use the 'onehalfspacing' option for 1.5 line spacing
 % Use the 'doublespacing' option for 2.0 line spacing
 % Use the 'lineno' option for adding line numbers.
@@ -26,7 +26,7 @@
 %%% IMPORTANT USER CONFIGURATION
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newcommand{\versionnumber}{0.2}  % you should update the minor version number in preprints and major version number of submissions.
+\newcommand{\versionnumber}{1.0}  % you should update the minor version number in preprints and major version number of submissions.
 \newcommand{\githubrepository}{\url{https://github.com/openforcefield/review-protein-benchmark-datasets}}  %this should be the main github repository for this article
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -94,13 +94,13 @@ The Center for Nonlinear Studies, Los Alamos National Laboratory, Los Alamos, NM
 %%% Fill out these parameters when available
 %%% These are used when the "pubversion" option is invoked
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\pubDOI{10.XXXX/YYYYYYY}
-\pubvolume{<volume>}
-\pubissue{<issue>}
-\pubyear{<year>}
-\articlenum{<number>}
-\datereceived{Day Month Year}
-\dateaccepted{Day Month Year}
+\pubDOI{10.33011/livecoms.6.1.3871}
+\pubvolume{6}
+\pubissue{1}
+\pubyear{2025}
+\articlenum{3871}
+\datereceived{21 March 2025}
+\dateaccepted{8 October 2025}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% ARTICLE START
@@ -391,7 +391,7 @@ Backbone chemical shift predictions computed from MD ensembles that have large d
 The largest deviations generally reflect incorrect secondary structures and/or side chain rotamers.
 Smaller deviations can result from inaccurate distributions of tertiary interactions in the MD ensemble, including hydrogen bonds, electrostatic interactions from charged groups, and aromatic ring currents.
 The latter are particularly important for proton chemical shifts.
-For disordered proteins, backbone chemical shifts are very sensitive to the presence of partially populated secondary structure elements, and deviations from experiment can indicate that MD ensembles overestimate or underestimate rare $\alpha$-helical, PP$_\mathsf{II}$, or $\beta$-sheet propensities.
+For disordered proteins, backbone chemical shifts are very sensitive to the presence of partially populated secondary structure elements, and deviations from experiment can indicate that MD ensembles overestimate or underestimate $\alpha$-helical, PP$_\mathsf{II}$, or $\beta$-sheet propensities.
 
 When comparing calculated and experimental backbone chemical shifts, one should keep the following considerations in mind.
 
@@ -837,7 +837,7 @@ These test the ability of a force field to accurately describe the dimensions an
 The proteins range in size from 40 to 140 amino acids, which was important, as a number of force fields that produced reasonable dimensions for proteins containing <70 amino acids produced conformations that were substantially over-collapsed for longer sequences.
 The available NMR data for these disordered proteins include chemical shifts, RDCs, backbone $J$-couplings, and PREs.
 Scalar couplings of the disordered Ala5 peptide were also included. 
-Code to calculate NMR and SAXS data for five IDPs in this benchmark (A$\beta$40, drkN SH3, ACTR, PaaA2 and $\alpha$-synuclein) is included in a recent manuscript describing a maximum entropy reweighting approach to calculate conformational ensembles of IDPs from experimental data \cite{borthakur2024determining} (\url{https://github.com/paulrobustelli/Borthakur_MaxEnt_IDPs_2024}).  
+Code to calculate NMR and SAXS data for five IDPs in this benchmark (A$\beta$40, drkN SH3, ACTR, PaaA2 and $\alpha$-synuclein) is included in a recent manuscript describing a maximum entropy reweighting approach to calculate conformational ensembles of IDPs from experimental data \cite{borthakur_determining_2025} (\url{https://github.com/paulrobustelli/Borthakur_MaxEnt_IDPs_2024}).
 
 The Robustelli dataset is enriched by a number of non-NMR data, including radii of gyration obtained by various experimental methods and data on the temperature-dependent stability of fast-folding proteins.
 The dataset has also been expanded \cite{piana_development_2020} to include the free energies of association of 14 protein-protein complexes, the osmotic coefficients of 18 organic and inorganic salts, the position of the first peak of the radial distribution functions of seven ion-water and ion-ion pairs, comparisons of Ramachandran distributions of blocked amino-acids in water, Ramachandran distributions obtained from X-ray coil libraries, Lifson-Roig helix extension parameters for the 20 amino acids (estimated from NMR studies of Ace-(AAXAA)3-Nme peptides), the folding free energies of mutants of 22 mutants of Trp-cage, the folding enthalpies of 10 fast-folding proteins, the Kirkwood-Buff integrals of ethanol water-mixtures, and the melting curves of the Trpzip1 and GB1 $\beta$-hairpin-forming peptides.
@@ -961,14 +961,16 @@ As with the comparison of average protein structures discussed above, this sort 
 \paragraph{General principles}
 
 The Debye-Waller factor of an atom, also known as its B-factor or temperature factor, is closely related to the atom’s fluctuations about its modeled position.
-B-factors are, in principle at least, related to the mean square displacement of the atom, $\langle u^2 \rangle$, by the equation
+B-factors are, in principle at least, related to the mean square displacement of the atom, $\left\langle \left| \vec{u} \right|^2 \right\rangle$, by the equation
 
 \begin{equation}
 \label{eqn:b_factor}
-B = \frac {8} {3} \pi^2 \langle u^2 \rangle
+B = \frac {8} {3} \pi^2 \left\langle \left| \vec{u} \right|^2 \right\rangle = 8 \pi^2 \left\langle u_s^2 \right\rangle
 \end{equation}
 
-\noindent However, B-factors can also have contributions from various sources of error and are sometimes viewed as "slop factors" that absorb other errors in the model to improve the fit to the diffraction data.
+\noindent where $u_s = \frac {\vec{u} \cdot \vec{s}} {\left| \vec{s} \right|}$ is the projection of the displacement vector $\vec{u}$ onto the direction of the scattering vector $\vec{s}$.
+The statistic $\left\langle u_s^2 \right\rangle$ is sometimes referred to as the isotropic mean square displacement \cite{trueblood_atomic_1996}.
+However, B-factors can also have contributions from various sources of error and are sometimes viewed as "slop factors" that absorb other errors in the model to improve the fit to the diffraction data.
 They may result from incorrect assignments of the identities of atoms of similar atomic number, i.e., K vs. Ca, and may also reflect, in a nonspecific manner, incorrect modeling of side chains, alternate conformations, and disordered regions.
 Debates continue between crystallographers about whether a region that exhibits signs of disorder should be left unmodeled, modeled with zero occupancy, or modeled with B-factors allowed to refine to high values; as a result, their meaning can vary between different crystal structures.
 However, when derived from well-validated structural models \cite{williams_molprobity_2018} that are modeled correctly and carefully interpreted, they provide a meaningful measure of the mobility of atoms within a protein structure.
@@ -977,7 +979,7 @@ A more detailed hierarchical model---which partitions the total disorder, normal
 
 \paragraph{Evaluation of MD simulations using Debye-Waller factors}
 
-Given a simulation of a protein crystal, it is straightforward to compute the mean square displacement of each atom from its mean position and thus obtain computed B-factors; a modest amount of additional complexity is involved in computing anisotropic B-factors.
+Given a simulation of a protein crystal, it is straightforward to compute the mean square displacement $\left\langle \left| \vec{u} \right|^2 \right\rangle$ of each atom from its mean position and thus obtain computed B-factors; a modest amount of additional complexity is involved in computing anisotropic B-factors.
 Alternatively, one may, again, refine a structural model into the electron density computed from the simulation and compare the resulting simulated B-factors with the experimental B-factors.
 Depending on the software used for refinement, constant offsets may be applied to reported B-factors using methods that do not distinguish contributions from molecular motion from other contributions \cite{liebschner_macromolecular_2019}.
 Constant offsets are often ignored in B-factor profile comparisons by using, e.g., a Pearson correlation to assess the agreement. Nevertheless, it is sometimes possible to account even for the constant offset using MD simulations \cite{wall_internal_2018}.
@@ -990,7 +992,7 @@ Constant offsets are often ignored in B-factor profile comparisons by using, e.g
 In contrast to B-factors, which in principle describe fluctuations within a local energy well, alternate conformations explicitly describe jumps between discrete conformational states in separate local energy wells.
 For example, alternate conformations---also known as alternative conformations, alt confs, alternate locations, or altlocs---can be used to model amino acid side chains that switch between different rotamer \cite{dunbrack_backbone-dependent_1993,lovell_penultimate_2000} conformations.
 Alternate conformations are a promising avenue for comparison to and improvement of simulations.
-In a protein structure file, an alternate conformation is given as an additional set of coordinates for a group of atoms (often a residue or series of residues) and marked with a single-character identifier (A, B, C, etc.) that is unique within the file.
+In a protein structure file (e.g., a PDB file), an alternate conformation is given as an additional set of coordinates for a group of atoms (often a residue or series of residues) and marked with a single-character identifier (A, B, C, etc.) that is unique within the file.
 Each alternate conformation is also assigned a partial occupancy (i.e., probability) from 0 to 1 that is determined by the crystallographic refinement.
 For covalently bound atoms, like those of proteins, the occupancies of all alternate conformations for a given atom typically sum to one.
 For molecules that are not covalently bound to the protein, such as ligands and water molecules, the occupancies may sum to less than one.
@@ -1042,7 +1044,7 @@ This is because X-rays are scattered by electrons, and a hydrogen atom, with onl
 In contrast, neutrons are scattered by atomic nuclei, and hydrogen atoms have high scattering cross-sections.
 As a consequence, neutron diffraction protein crystallography can provide experimental information on hydrogen atom positions and protonation states \cite{blakeley_neutron_2009,ashkar_neutron_2018}.
 These data are valuable because hydrogens make up nearly half the atoms in proteins and can play critical functional and structural roles \cite{word_asparagine_1999,word_visualizing_1999}.
-Thus, neutron diffraction studies are uniquely suited to discern hydrogen bonding patterns \cite{chen_direct_2012,nakamura_newtons_2015}, the orientations of solvents and side chain groups \cite{blakeley_15-k_2004,wall_biomolecular_2019}, and the protonation states of critical catalytic amino acids---such as the histidine in the catalytic triad of a serine protease \cite{kossiakoff_neutron_1980,kossiakoff_direct_1981}.
+Thus, neutron diffraction studies are uniquely suited to discern hydrogen bonding patterns \cite{chen_direct_2012,nakamura_newtons_2015}, the orientations of solvent and side chain groups \cite{blakeley_15-k_2004,wall_biomolecular_2019}, and the protonation states of critical catalytic amino acids---such as the histidine in the catalytic triad of a serine protease \cite{kossiakoff_neutron_1980,kossiakoff_direct_1981}.
 By the same token, they provide distinctive information to benchmark protein force fields.
 
 Neutron diffraction is generally weak and therefore requires large crystals and long data collection times.
@@ -1095,6 +1097,7 @@ Second, Meisburger et al. \cite{meisburger_diffuse_2020} simulated triclinic HEW
 Since collective motions of many protein chains are important for diffuse scattering, simulations were carried out using 1, 27, 125, and 343 unit cells, but they used only a single protein force field, so this study did not directly address the suitability of diffuse scattering for force field benchmarking.
 
 There are also RT crystal structures for two other crystal forms---orthorhombic (PDB IDs 1AKI \cite{artymiuk_structures_1982} and 8DYZ \cite{meisburger_robust_2023}) and tetragonal (PDB ID 8DZ7 \cite{meisburger_robust_2023})---of HEWL, and these may further probe the ability of force fields to capture crystal-packing interactions \cite{meisburger_robust_2023}.
+Additionally, NMR data for HEWL in solution is available as part of the Stroet (Section \ref{sub2:stroet}) and Robustelli (Section \ref{sub2:robustelli}) datasets.
 
 \subsubsection{Crambin}
 \label{sub2:crambin}
@@ -1105,7 +1108,7 @@ Of note here is a study combining RT X-ray and neutron diffraction to \qty{1.1}{
 More recently, a new dataset of crambin was collected at RT to \qty{0.70}{\angstrom} (PDB ID 9EWK) \cite{chen_solvent_2024}, and the model was refined to an R-factor of 0.0591 for reflections four standard deviations above background and of 0.0759 for all reflections, with stereochemical restraints released during the refinement process.
 This model has one of the lowest R-factors in the PDB.
 The estimated standard deviation for C-C bonds (a measure of the uncertainty in bond lengths for a model refined without restraints on bond lengths) was \qty{1.6}{\pico\meter} overall (\qty{0.6}{\pico\meter} for atoms with no alternate conformations).
-These estimated standard deviations are similar in magnitude to those found in the Cambridge Structural Database (CSD) \cite{groom_cambridge_2016}, a database of small molecular crystals containing particularly reliable molecular geometries. 
+These estimated standard deviations are similar in magnitude to those found in the Cambridge Structural Database (CSD) \cite{groom_cambridge_2016}, a database of small molecule crystals containing particularly reliable molecular geometries. 
 NMR data has also been reported on recombinantly expressed crambin \cite{ahn_three-dimensional_2006}.
 
 \subsubsection{Cyclophilin A}
@@ -1141,6 +1144,7 @@ High-resolution RT crystallography data and models are available for both ubiqui
 Simulations based on these datasets should ideally capture the differences in $\beta$1$\beta$2 loop conformational heterogeneity observed in the crystallographic electron density maps for the two variants (more flexible for the core mutant, more rigid for the affinity-matured mutant) as well as the peptide flip shared by both variants.
 For this system, a number of metrics could be used to quantify the match between simulations and experimental data: root-mean-square fluctuations (RMSF) of backbone atoms in the loop for simulations vs. for multi-conformer crystal structures, local real-space fit to the electron density map in the $\beta$1$\beta$2 loop region, recapitulation of fractional occupancies for the different loop conformations (perhaps after clustering the simulation snapshots), etc.
 Thus, the high-resolution RT crystallography datasets available for these ubiquitin variants provide an opportunity to benchmark force fields for their ability to provide accurate simulations of protein backbone conformational heterogeneity, as well as accurate predictions of the effects of amino acid substitutions on conformational heterogeneity.
+Note that NMR data for wild-type ubiquitin in solution is available as part of the Beauchamp (Section \ref{sub2:beauchamp}), Stroet (Section \ref{sub2:stroet}), and Robustelli (Section \ref{sub2:robustelli}) datasets.
 
 \subsubsection{Protein tyrosine phosphatase 1B}
 \label{sub2:ptp1b}
