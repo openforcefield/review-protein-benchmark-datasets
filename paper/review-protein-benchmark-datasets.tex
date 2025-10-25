@@ -311,6 +311,7 @@ Here, Section \ref{sub:nmr_obs} discusses NMR observables that can be used to as
 The observables considered are chemical shifts, scalar couplings (also known as J-couplings), residual dipolar couplings (RDCs), the nuclear Overhauser effect (NOE), spin relaxation, and paramagnetic relaxation enhancement (PRE).
 Section \ref{sub:nmr_data} then presents available experimental NMR datasets that are well suited for evaluating simulations.
 
+\newpage
 \subsection{NMR observables}
 \label{sub:nmr_obs}
 
@@ -469,6 +470,7 @@ When a salt bridge is formed, the presence of the anionic side chain alters the 
 Similar to the helical fraction, the fraction of salt bridge formation can be calculated from the chemical shifts observed in the experiment, along with reference shifts measured in the presence and absence of the salt bridge.
 Simulations can then be analyzed to provide the fraction of time the salt bridge is present based on geometric criteria for hydrogen bonding between the charged side chains.
 
+\newpage
 \subsubsection{Scalar couplings}
 \label{sub2:j_coupling}
 
@@ -812,7 +814,7 @@ Any pseudoatom corrections included in the experimental data were first removed,
 Pseudoatom corrections were applied in this way to six of the nine proteins with NOE distance restraints.
 For two of the remaining three proteins, no information on any pseudoatom corrections to the NOE-derived upper bounds could be found, and so the NOE restraints reported for these proteins may be less rigorous.
 For the third, mercury binding protein from \textit{Shigella flexneri} (PDB ID 1AFI), a large number of violations in NOEs assigned to Phe47 were observed in initial simulations.
-Inspection of the structure and the violations points to wrongly assigned explicit phenyl ring hydrogens HE1/2 and HD1/2.
+Inspection of the structure and the violations points to wrongly assigned explicit phenyl ring hydrogens H$\varepsilon$1/2 and H$\delta$1/2.
 Replacing the assignment of these protons on the symmetrical phenyl ring by pseudoatoms HE* and HD*, and adding the appropriate pseudoatom corrections \cite{wuthrich_nmr_1986}, removed all violations above \qty{0.5}{\angstrom} \cite{stroet_validation_2024}.
 
 \subsubsection{Mao folded proteins}
@@ -955,6 +957,7 @@ One may also focus on the accuracy of protein-protein contacts at interfaces, as
 Most crystal contact analysis methods, such as the PISA software \cite{krissinel_inference_2007}, use a single average structure as input, so it is difficult to account directly for disorder.
 As with the comparison of average protein structures discussed above, this sort of comparison may be most useful when there are relatively large differences between the results from different proposed force fields.
 
+\newpage
 \subsubsection{Debye-Waller factors (B-factors)}
 \label{sub2:b_factors}
 
@@ -1269,7 +1272,7 @@ N_{\mathsf{ions}} = \frac {N_{\mathsf{water}}} {C_{\mathsf{water}}} C_{\mathsf{i
 
 \noindent where $C_{\mathsf{water}}$ is the expected concentration of bulk water in dilute solution, \qty{55.4}{\mol\per\liter}, and $C_{\mathsf{ions}}$ is the experimental concentration of bulk salt.
 If the protein has a net charge, then the solvent near the protein will be depleted of ions of like charge and enriched in ions of opposite charge, relative to bulk \cite{schmit_sltcap_2018}.
-In this case, the desired number of ion pairs can be estimated using the SLTCAP method (this expression is equivalent to Eq. 5 in Schmit et al.) \cite{schmit_sltcap_2018}.
+In this case, the desired number of ion pairs can be estimated using the SLTCAP method (this expression is equivalent to Eq. 5 in Schmit et al. \cite{schmit_sltcap_2018}).
 
 \begin{equation}
 \label{eqn:ions_charged}
@@ -1293,6 +1296,7 @@ In particular, Berendsen or weak-coupling methods fail to preserve the equiparti
 These methods should be avoided in favor of methods that sample correctly from physical ensembles, such as Langevin dynamics, the canonical velocity rescaling thermostat, and the Monte Carlo barostat.
 Additional care is needed when computing kinetic quantities, as some thermostats---most notably Langevin dynamics, with its added frictional damping and random forces---may introduce significant kinetic artifacts.
 
+\vfill\break % column break
 \subsection{Analysis of benchmark simulations}
 \label{sub:best_practices_analysis}
 
@@ -1316,10 +1320,10 @@ A number of methods have been developed to assess convergence \cite{grossfield_b
 In one simple approach, the time series of observable estimates is visualized to check for drift over the course of the simulation.
 Blocking analysis, a more rigorous approach, divides the trajectory into blocks and looks for convergence of the standard error of the mean as the block size is increased \cite{flyvbjerg_error_1989}.
 
-Assessment of convergence will identify when the populations of states visited during a simulation are not known precisely, but such analysis cannot identify when a simulation fails entirely to visit regions of a protein's configuration space that carry significant weight in the Boltzmann distribution.
+Assessment of convergence will indicate when the populations of states visited during a simulation are not known precisely, but such analysis cannot identify when a simulation fails entirely to visit regions of a protein's configuration space that carry significant weight in the Boltzmann distribution.
 This failure mode can occur, for example, when high free energy barriers exist between minima that contribute to the protein's ensemble in the experimental measurements.
 Diagnosing this problem requires some knowledge of the proteins being simulated, either from experimental measurements or from a reference ensemble known to model the system well.
-If benchmark simulations of a particular protein consistently fail to visit relevant regions of the protein's configuration space across multiple force fields, enhanced sampling methods \cite{henin_enhanced_2022} can accelerate barrier crossing, though at the cost of additional complexity in obtaining estimates of observables and uncertainties \cite{grossfield_best_2019}.
+If benchmark simulations of a particular protein consistently fail to visit relevant regions of the protein's configuration space across multiple force fields, enhanced sampling methods \cite{henin_enhanced_2022} can accelerate barrier crossing at the cost of additional complexity in obtaining estimates of observables and uncertainties \cite{grossfield_best_2019}.
 
 \subsubsection{Statistical analysis}
 \label{sub2:statistics}
