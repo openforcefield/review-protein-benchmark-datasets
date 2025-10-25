@@ -1,7 +1,7 @@
 # Structure-Based Experimental Datasets for Benchmarking Protein Simulation Force Fields
 
 This repository is associated with the [LiveCoMS perpetual review article](https://livecomsjournal.org/index.php/livecoms/catalog/category/reviews) titled "Structure-Based Experimental Datasets for Benchmarking Protein Simulation Force Fields".
-The LiveCoMS publication is [available here](https:doi.org/10.33011/livecoms.6.1.3871).
+The LiveCoMS publication is [available here](https://doi.org/10.33011/livecoms.6.1.3871).
 
 ## List of Authors
 
@@ -27,7 +27,7 @@ This paper is being developed as a living document, open to changes from the com
 
 - v0.1: Initial submission to LiveCoMS. Posted as a [preprint on arXiv](https://arxiv.org/abs/2303.11056).
 - v0.2: Revised submission to LiveCoMS after peer review.
-- v1.0: Accepted and published in LiveCoMS at [https:doi.org/10.33011/livecoms.6.1.3871](https:doi.org/10.33011/livecoms.6.1.3871).
+- v1.0: Accepted and published in LiveCoMS at [https:doi.org/10.33011/livecoms.6.1.3871](https://doi.org/10.33011/livecoms.6.1.3871).
 
 ## Changelog
 
