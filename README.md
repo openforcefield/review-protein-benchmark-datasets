@@ -20,6 +20,28 @@ The LiveCoMS publication is [available here](https://doi.org/10.33011/livecoms.6
 - David C. Wych, Computer, Computational, and Statistical Sciences Division, Los Alamos National Laboratory, Los Alamos, NM, USA and The Center for Nonlinear Studies, Los Alamos National Laboratory, Los Alamos, NM, USA
 - Michael K. Gilson, Skaggs School of Pharmacy and Pharmaceutical Sciences, University of California San Diego, La Jolla, CA, USA
 
+## How to cite
+Please use the following citation to reference this work:
+
+Cavender, C. E., Case, D. A., Chen, J. C.-H., Chong, L. T., Keedy, D. A., Lindorff-Larsen, K., Mobley, D. L., Ollila, O. H. S., Oostenbrink, C., Robustelli, P., Voelz, V. A., Wall, M. E., Wych, D. C., Gilson, M. K. (2025). Structure-Based Experimental Datasets for Benchmarking Protein Simulation Force Fields \[Article v1.0\]. *Living Journal of Computational Molecular Science*, 6(1), 3871. https://doi.org/10.33011/livecoms.6.1.3871
+
+BibTeX:
+
+```
+@article{cavender_structure-based_2025,
+    title={Structure-Based Experimental Datasets for Benchmarking Protein Simulation Force Fields \[Article v1.0\]},
+    volume={6},
+    url={https://livecomsjournal.org/index.php/livecoms/article/view/v6i1e3871},
+    doi={10.33011/livecoms.6.1.3871},
+    number={1},
+    journal={Living Journal of Computational Molecular Science},
+    author={Cavender, Chapin E. and Case, David A. and Chen, Julian C.-H. and Chong, Lillian T. and Keedy, Daniel A. and Lindorff-Larsen, Kresten and Mobley, David L. and Ollila, O. H. Samuli and Oostenbrink, Chris and Robustelli, Paul and Voelz, Vincent A. and Wall, Michael E. and Wych, David C. and Gilson, Michael K.},
+    year={2025},
+    month={Oct.},
+    pages={3871}
+}
+```
+
 ## Paper writing as code development
 This paper is being developed as a living document, open to changes from the community. You can read more about the concept of writing a paper in the same way one would write software code in the essay ["Paper writing as code development"](https://livecomsjournal.github.io/about/paper_code/). If you have comments or suggestions, we welcome them! Please [submit them as issues](https://guides.github.com/features/issues/) to this GitHub repository so they can be recorded and given credit for the contribution. Specific changes can be proposed [via pull requests](https://help.github.com/articles/about-pull-requests/).
 
